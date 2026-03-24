@@ -1,3 +1,12 @@
+# Assignment 3 – Student Grade Tracker
+# Name: Mili Rana
+# Student ID: 2511975
+# This program performs:
+# Task 1 – Data Cleaning and Profile Formatting
+# Task 2 – Marks Analysis Using Loops & Conditionals
+# Task 3 – Class Performance Summary
+# Task 4 – String Manipulation Utility
+
 #Student Grade Tracker
 #Task 1- Data Parsing and Profile cleaning
 
