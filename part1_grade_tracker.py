@@ -17,7 +17,7 @@ raw_students = [
     {"name": "karan MEHTA",       "roll": "104", "marks_str": "40, 55, 38, 62, 50"},
     {"name": " Sneha pillai ",    "roll": "105", "marks_str": "75, 80, 70, 68, 85"},
 ]
-#1.
+
 for student in raw_students:
     name = student["name"].strip().title()
     #strip() is used to remove spaces from the start and end of a string
@@ -31,7 +31,6 @@ for student in raw_students:
     
     print(name, roll, marks)
 
-    #2.
     valid = True
     for word in name.split():
         if not word.isalpha():
@@ -42,14 +41,12 @@ for student in raw_students:
     else:
         print(name, "✗ Invalid name")
 
-    #3.
     print("================================")
     print(f"Student : {name}")
     print(f"Roll No : {roll}")
     print(f"Marks   : {marks}")
     print("================================")
 
-    #4.
     if roll == 103:
         print(name.upper())
         print(name.lower())
@@ -62,7 +59,6 @@ student_name = "Ayesha Sharma"
 subjects     = ["Math", "Physics", "CS", "English", "Chemistry"]
 marks        = [88, 72, 95, 60, 78]
 
-#1.
 for i in range(len(subjects)):
     m = marks[i]
     if m >= 90:
@@ -78,7 +74,6 @@ for i in range(len(subjects)):
 
     print(subjects[i], "-", m, "-", grade)
 
-#2.
 total = sum(marks)
 average = round(total / len(marks), 2)
 
@@ -91,7 +86,6 @@ lowest = min(marks)
 print("Highest Scoring Subject:", subjects[marks.index(highest)], highest)
 print("Lowest Scoring Subject:", subjects[marks.index(lowest)], lowest)
 
-#3.
 print("\nEnter new subjects and marks (type 'done' to stop)")
 
 while True:
