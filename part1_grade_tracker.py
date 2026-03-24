@@ -20,14 +20,12 @@ raw_students = [
 
 for student in raw_students:
     name = student["name"].strip().title()
-    #strip() is used to remove spaces from the start and end of a string
-    #title() is used to cinver a string into title case
+    #this will removes spaces from start and end and will change the case to title case
     roll = int(student["roll"])
-    #int is used to change the data type to inetger
+    #this will convert roll numbers to integers
     marks_list = student["marks_str"].split(", ")
     marks = [int(m) for m in marks_list]
-    #split(", ") here will seperate the values with ',' and ' '
-    # int is converting all marks into integers 
+    #this will split the marks wherever theres a comma and/or space and convert it to integers 
     
     print(name, roll, marks)
 
@@ -35,22 +33,25 @@ for student in raw_students:
     for word in name.split():
         if not word.isalpha():
             valid = False
+    #this will make sure all the names only contain alphabets 
 
     if valid:
         print(name, "✓ Valid name")
     else:
         print(name, "✗ Invalid name")
+    #if the name contains anything other than alphabets it gonna say that its ✗ Invalid name
 
     print("================================")
     print(f"Student : {name}")
     print(f"Roll No : {roll}")
     print(f"Marks   : {marks}")
     print("================================")
+    #will print all names, roll no. and marks in a patricular format
 
     if roll == 103:
         print(name.upper())
         print(name.lower())
-
+#if a roll no. is103 then its name will be printed in both upper and lower case
 
 
 #Task 2- Marks Analysis Using Loops & Conditionals 
@@ -73,6 +74,7 @@ for i in range(len(subjects)):
         grade = "F"
 
     print(subjects[i], "-", m, "-", grade)
+#this will print grades based on conditions given in the assignment using if-elif conditional statements
 
 total = sum(marks)
 average = round(total / len(marks), 2)
@@ -85,6 +87,7 @@ lowest = min(marks)
 
 print("Highest Scoring Subject:", subjects[marks.index(highest)], highest)
 print("Lowest Scoring Subject:", subjects[marks.index(lowest)], lowest)
+#this is doing marks analysis
 
 print("\nEnter new subjects and marks (type 'done' to stop)")
 
@@ -113,6 +116,7 @@ new_total = sum(marks)
 new_average = round(new_total / len(marks), 2)
 
 print("Updated Average Marks:", new_average)
+#this is loop where a users input is take and when they type in done when they are done its gonna update the marks and give out the updated average
 
 
 
