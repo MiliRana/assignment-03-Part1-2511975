@@ -1,14 +1,11 @@
+# part1_grade_tracker.py
 # Assignment 3 – Student Grade Tracker
 # Name: Mili Rana
 # Student ID: 2511975
-# This program performs:
-# Task 1 – Data Cleaning and Profile Formatting
-# Task 2 – Marks Analysis Using Loops & Conditionals
-# Task 3 – Class Performance Summary
-# Task 4 – String Manipulation Utility
 
-#Student Grade Tracker
-#Task 1- Data Parsing and Profile cleaning
+# -------------------------------
+# Task 1 – Data Parsing & Profile Cleaning
+# -------------------------------
 
 raw_students = [
     {"name": "  ayesha SHARMA  ", "roll": "101", "marks_str": "88, 72, 95, 60, 78"},
@@ -19,47 +16,44 @@ raw_students = [
 ]
 
 for student in raw_students:
+    # clean name and roll
     name = student["name"].strip().title()
-    #this will removes spaces from start and end and will change the case to title case
     roll = int(student["roll"])
-    #this will convert roll numbers to integers
-    marks_list = student["marks_str"].split(", ")
-    marks = [int(m) for m in marks_list]
-    #this will split the marks wherever theres a comma and/or space and convert it to integers 
-    
-    print(name, roll, marks)
+    marks = [int(m) for m in student["marks_str"].split(", ")]
 
+    # check if name is valid (only alphabets)
     valid = True
     for word in name.split():
         if not word.isalpha():
             valid = False
-    #this will make sure all the names only contain alphabets 
 
     if valid:
         print(name, "✓ Valid name")
     else:
         print(name, "✗ Invalid name")
-    #if the name contains anything other than alphabets it gonna say that its ✗ Invalid name
 
+    # profile card
     print("================================")
     print(f"Student : {name}")
     print(f"Roll No : {roll}")
     print(f"Marks   : {marks}")
     print("================================")
-    #will print all names, roll no. and marks in a patricular format
 
+    # special case for roll 103
     if roll == 103:
         print(name.upper())
         print(name.lower())
-#if a roll no. is103 then its name will be printed in both upper and lower case
 
 
-#Task 2- Marks Analysis Using Loops & Conditionals 
+# -------------------------------
+# Task 2 – Marks Analysis Using Loops & Conditionals
+# -------------------------------
 
 student_name = "Ayesha Sharma"
-subjects     = ["Math", "Physics", "CS", "English", "Chemistry"]
-marks        = [88, 72, 95, 60, 78]
+subjects = ["Math", "Physics", "CS", "English", "Chemistry"]
+marks = [88, 72, 95, 60, 78]
 
+# print subject, marks, grade
 for i in range(len(subjects)):
     m = marks[i]
     if m >= 90:
@@ -72,62 +66,57 @@ for i in range(len(subjects)):
         grade = "C"
     else:
         grade = "F"
-
     print(subjects[i], "-", m, "-", grade)
-#this will print grades based on conditions given in the assignment using if-elif conditional statements
 
+# totals and averages
 total = sum(marks)
 average = round(total / len(marks), 2)
-
 print("Total Marks:", total)
 print("Average Marks:", average)
 
 highest = max(marks)
 lowest = min(marks)
-
 print("Highest Scoring Subject:", subjects[marks.index(highest)], highest)
 print("Lowest Scoring Subject:", subjects[marks.index(lowest)], lowest)
-#this is doing marks analysis
 
+# while loop for new subjects
 print("\nEnter new subjects and marks (type 'done' to stop)")
-
+new_count = 0
 while True:
     subject = input("Enter subject name: ")
-
     if subject.lower() == "done":
         break
 
     marks_input = input("Enter marks: ")
-
     if not marks_input.isdigit():
         print("Invalid marks. Please enter a number.")
         continue
 
     marks_input = int(marks_input)
-
     if marks_input < 0 or marks_input > 100:
         print("Marks must be between 0 and 100.")
         continue
 
     subjects.append(subject)
     marks.append(marks_input)
+    new_count += 1
 
 new_total = sum(marks)
 new_average = round(new_total / len(marks), 2)
-
+print("New subjects added:", new_count)
 print("Updated Average Marks:", new_average)
-#this is loop where a users input is take and when they type in done when they are done its gonna update the marks and give out the updated average
 
 
-
-#Task 3 – Class Performance Summary
+# -------------------------------
+# Task 3 – Class Performance Summary
+# -------------------------------
 
 class_data = [
-    ("Ayesha Sharma",  [88, 72, 95, 60, 78]),
-    ("Rohit Verma",    [55, 68, 49, 72, 61]),
-    ("Priya Nair",     [91, 85, 88, 94, 79]),
-    ("Karan Mehta",    [40, 55, 38, 62, 50]),
-    ("Sneha Pillai",   [75, 80, 70, 68, 85]),
+    ("Ayesha Sharma", [88, 72, 95, 60, 78]),
+    ("Rohit Verma",   [55, 68, 49, 72, 61]),
+    ("Priya Nair",    [91, 85, 88, 94, 79]),
+    ("Karan Mehta",   [40, 55, 38, 62, 50]),
+    ("Sneha Pillai",  [75, 80, 70, 68, 85]),
 ]
 
 print("Name              | Average | Status")
@@ -137,10 +126,7 @@ pass_count = 0
 fail_count = 0
 averages = []
 
-for student in class_data:
-    name = student[0]
-    marks = student[1]
-
+for name, marks in class_data:
     avg = round(sum(marks) / len(marks), 2)
     averages.append(avg)
 
@@ -152,7 +138,6 @@ for student in class_data:
         fail_count += 1
 
     print(f"{name:<18} | {avg:>6} | {status}")
-
     print()
 
 print("Students Passed:", pass_count)
@@ -161,15 +146,15 @@ print("Students Failed:", fail_count)
 top_avg = max(averages)
 topper_index = averages.index(top_avg)
 topper_name = class_data[topper_index][0]
-
 print("Class Topper:", topper_name, "-", top_avg)
 
 class_avg = round(sum(averages) / len(averages), 2)
 print("Class Average:", class_avg)
 
 
-
+# -------------------------------
 # Task 4 – String Manipulation Utility
+# -------------------------------
 
 essay = "  python is a versatile language. it supports object oriented, functional, and procedural programming. python is widely used in data science and machine learning.  "
 
@@ -198,30 +183,7 @@ print(sentences)
 print()
 
 print("Numbered Sentences:")
-
-for i in range(len(sentences)):
-    sentence = sentences[i]
-
+for i, sentence in enumerate(sentences, start=1):
     if not sentence.endswith("."):
         sentence += "."
-
-    print(i + 1, "-", sentence)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print(i, "-", sentence)
